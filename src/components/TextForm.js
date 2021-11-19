@@ -15,6 +15,19 @@ export default function TextForm(props) {
         setText(newTxt);
     }
 
+    const clearHandle = () => {
+        setText("");
+    }
+
+    const copyHandle = () => {
+        navigator.clipboard.writeText = text;
+    }
+
+    const extraSpacesHandle = () => {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
+
     const onchangeHandler = (event) => {
         // console.log("onchangeHandler triggered.");
         setText(event.target.value);
@@ -29,6 +42,15 @@ export default function TextForm(props) {
                                                          */
     const [text, setText] = useState("");
     let words = text.split(" ").length;
+    function wordCounter() {
+        let words = text.split(" ").length;
+        if (text === "") {
+            return 0;
+        } else {
+            return words;
+        }
+    }
+
     function estTime(word) {
         let time = 0.48 * (word - 1);
         if (time > 60) {
@@ -48,11 +70,14 @@ export default function TextForm(props) {
                 </div>
                 <button className="btn btn-primary my-1 mx-1" onClick={upperCaseHandle}>CONVERT TO UPPERCASE</button>
                 <button className="btn btn-primary my-1 mx-1" onClick={lowerCaseHandle}>convert to lowercase</button>
+                <button className="btn btn-primary my-1 mx-1" onClick={clearHandle}>Clear</button>
+                <button className="btn btn-primary my-1 mx-1" onClick={copyHandle}>Copy Text</button>
+                <button className="btn btn-primary my-1 mx-1" onClick={extraSpacesHandle}>Remove Extra Spaces</button>
             </div>
             <div className="container my-3">
                 <h2>Text summery</h2>
                 <hr />
-                <b>{words - 1} Words {text.length} Characters</b>
+                <b>{wordCounter()} Words {text.length} Characters</b>
                 <br />
                 <b>{estTime(words)} need to read</b>
             </div>
