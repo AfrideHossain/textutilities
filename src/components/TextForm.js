@@ -21,7 +21,7 @@ export default function TextForm(props) {
                                                             we use const because we want to read the
                                                             variable from anywhere.
                                                          */
-    const [text, setText] = useState();
+    const [text, setText] = useState("");
     return (
         <div>
             <h1> {props.heading} </h1>
