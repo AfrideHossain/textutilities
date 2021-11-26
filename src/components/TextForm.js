@@ -41,7 +41,9 @@ export default function TextForm(props) {
                                                             variable from anywhere.
                                                          */
     const [text, setText] = useState("");
+
     let words = text.split(" ").length;
+
     function wordCounter() {
         let words = text.split(" ").length;
         if (text === "") {
@@ -63,10 +65,13 @@ export default function TextForm(props) {
 
     return (
         <>
-            <div className="container">
+            <div className="container" style={{ color: props.mode === "dark" ? "#FFF" : "#212529e5" }}>
                 <h1> {props.heading} </h1>
                 <div className="mb-3">
-                    <textarea className="form-control" value={text} placeholder="Enter your text here" onChange={onchangeHandler} id="myTxtBox" rows="8"></textarea>
+                    <textarea className="form-control" style={{
+                        backgroundColor: props.mode === "dark" ? "#212529e5" : "#FFF",
+                        color: props.mode === "dark" ? "#FFF" : "#212529e5"
+                    }} value={text} placeholder="Enter your text here" onChange={onchangeHandler} id="myTxtBox" rows="8"></textarea>
                 </div>
                 <button className="btn btn-primary my-1 mx-1" onClick={upperCaseHandle}>CONVERT TO UPPERCASE</button>
                 <button className="btn btn-primary my-1 mx-1" onClick={lowerCaseHandle}>convert to lowercase</button>
@@ -74,7 +79,7 @@ export default function TextForm(props) {
                 <button className="btn btn-primary my-1 mx-1" onClick={copyHandle}>Copy Text</button>
                 <button className="btn btn-primary my-1 mx-1" onClick={extraSpacesHandle}>Remove Extra Spaces</button>
             </div>
-            <div className="container my-3">
+            <div className="container my-3" style={{ color: props.mode === "dark" ? "#FFF" : "#212529e5" }}>
                 <h2>Text summery</h2>
                 <hr />
                 <b>{wordCounter()} Words {text.length} Characters</b>
