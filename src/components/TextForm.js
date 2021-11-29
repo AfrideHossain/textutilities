@@ -7,25 +7,33 @@ export default function TextForm(props) {
         // console.log("upperCaseHandle was clicked.");
         let newTxt = text.toUpperCase(); // we declare a let variable because we can't perform this action into setText function
         setText(newTxt);
+        props.showAlert("Converted to uppercase", "success");
     }
 
     const lowerCaseHandle = () => {
         // console.log("upperCaseHandle was clicked.");
         let newTxt = text.toLowerCase(); // we declare a let variable because we can't perform this action into setText function
         setText(newTxt);
+        props.showAlert("Converted to lowercase", "success");
     }
 
     const clearHandle = () => {
         setText("");
+        props.showAlert("Text cleared", "success");
     }
 
     const copyHandle = () => {
-        navigator.clipboard.writeText = text;
+        let copiedTxt = document.getElementById("myTxtBox");
+        copiedTxt.select();
+        // navigator.clipboard.writeText = text;
+        navigator.clipboard.writeText(copiedTxt.value);
+        props.showAlert("Copied to clipboard", "success");
     }
 
     const extraSpacesHandle = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.showAlert("Extra spaces removed", "success");
     }
 
     const onchangeHandler = (event) => {
