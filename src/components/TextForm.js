@@ -49,20 +49,17 @@ export default function TextForm(props) {
                                                             variable from anywhere.
                                                          */
     const [text, setText] = useState("");
-
-    let words = text.split(" ").length;
+    let words = wordCounter();
 
     function wordCounter() {
-        let words = text.split(" ").length;
-        if (text === "") {
-            return 0;
-        } else {
-            return words;
-        }
+        let words = text.split(" ").filter((elm) => {
+            return elm.length !== 0;
+        });
+        return words.length;
     }
 
     function estTime(word) {
-        let time = 0.48 * (word - 1);
+        let time = 0.48 * word;
         if (time > 60) {
             return (time / 60).toFixed(2) + " Minutes";
         } else {
