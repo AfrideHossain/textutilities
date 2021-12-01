@@ -78,11 +78,11 @@ export default function TextForm(props) {
                         color: props.mode === "dark" ? "#FFF" : "#212529e5"
                     }} value={text} placeholder="Enter your text here" onChange={onchangeHandler} id="myTxtBox" rows="8"></textarea>
                 </div>
-                <button className="btn btn-primary my-1 mx-1" onClick={upperCaseHandle}>CONVERT TO UPPERCASE</button>
-                <button className="btn btn-primary my-1 mx-1" onClick={lowerCaseHandle}>convert to lowercase</button>
-                <button className="btn btn-primary my-1 mx-1" onClick={clearHandle}>Clear</button>
-                <button className="btn btn-primary my-1 mx-1" onClick={copyHandle}>Copy Text</button>
-                <button className="btn btn-primary my-1 mx-1" onClick={extraSpacesHandle}>Remove Extra Spaces</button>
+                <button disabled={text.length === 0} className="btn btn-primary my-1 mx-1" onClick={upperCaseHandle}>CONVERT TO UPPERCASE</button>
+                <button disabled={text.length === 0} className="btn btn-primary my-1 mx-1" onClick={lowerCaseHandle}>convert to lowercase</button>
+                <button disabled={text.length === 0} className="btn btn-primary my-1 mx-1" onClick={clearHandle}>Clear</button>
+                <button disabled={text.length === 0} className="btn btn-primary my-1 mx-1" onClick={copyHandle}>Copy Text</button>
+                <button disabled={text.length === 0} className="btn btn-primary my-1 mx-1" onClick={extraSpacesHandle}>Remove Extra Spaces</button>
             </div>
             <div className="container my-3" style={{ color: props.mode === "dark" ? "#FFF" : "#212529e5" }}>
                 <h2>Text summery</h2>
