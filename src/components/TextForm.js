@@ -11,8 +11,7 @@ export default function TextForm(props) {
     }
 
     const lowerCaseHandle = () => {
-        // console.log("upperCaseHandle was clicked.");
-        let newTxt = text.toLowerCase(); // we declare a let variable because we can't perform this action into setText function
+        let newTxt = text.toLowerCase();
         setText(newTxt);
         props.showAlert("Converted to lowercase", "success");
     }
@@ -27,6 +26,7 @@ export default function TextForm(props) {
         copiedTxt.select();
         // navigator.clipboard.writeText = text;
         navigator.clipboard.writeText(copiedTxt.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Copied to clipboard", "success");
     }
 
@@ -41,18 +41,11 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
 
-    /* const [text, setText] = useState("Enter text here"); */ /* Here text is used as a state variable.
-                                                            setText is used as a callback function
-                                                            because we can't change a state variable
-                                                            directly.
-                                                            we use const because we want to read the
-                                                            variable from anywhere.
-                                                         */
-    const [text, setText] = useState("");
+    const [text, setText] = useState(""); /* Here text is used as a state variable. setText is used as a callback function because we can't change a state variable directly. we use const because we want to read the variable from anywhere. */
     let words = wordCounter();
 
     function wordCounter() {
-        let words = text.split(" ").filter((elm) => {
+        let words = text.split(/[\s+]/).filter((elm) => {
             return elm.length !== 0;
         });
         return words.length;
@@ -66,7 +59,6 @@ export default function TextForm(props) {
             return time.toFixed(2) + " Seconds";
         }
     }
-    // let time = estTime(words);
 
     return (
         <>

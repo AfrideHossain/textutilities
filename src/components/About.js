@@ -4,12 +4,8 @@ export default function About(props) {
     const myStyleFbody = {
         backgroundColor: props.mode === "dark" ? "#212529e5" : "#FFF",
         color: props.mode === "dark" ? "#FFF" : "#212529e5"
-        // backgroundColor: props.mode === "dark" ? "#343a40" : "#FFF",
-        // color: props.mode === "dark" ? "#FFF" : "#343a40"
     };
     const myStyleFbtn = {
-        // backgroundColor: props.mode === "dark" ? "#212529e5" : "#e7f1ff",
-        // color: props.mode === "dark" ? "#FFF" : "#212529e5"
         backgroundColor: props.mode === "dark" ? "#343a40" : "#FFF",
         color: props.mode === "dark" ? "#FFF" : "#343a40"
     };

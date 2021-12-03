@@ -43,15 +43,8 @@ function App() {
       <Router>
         <Navbar title='TextUtils' mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
-        {/* <Navbar title='TextUtils' /> */}
         <div className="container my-3">
           <Routes>
-            {/* <Route exact path="/">
-              <TextForm heading="Enter Text To Manipulate" showAlert={showAlert} mode={mode} />
-            </Route>
-            <Route exact path="/about">
-              <About />
-            </Route> */}
             <Route exact path="/" element={<TextForm heading="Enter Text To Manipulate" showAlert={showAlert} mode={mode} />} />
             <Route exact path="/about" element={<About mode={mode} />} />
           </Routes>
